@@ -1,47 +1,57 @@
-# See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
-
-# Compiled output
-/dist
-/tmp
-/out-tsc
-/bazel-out
-
-# Node
-/node_modules
-npm-debug.log
-yarn-error.log
-
-# IDEs and editors
-.idea/
-.project
-.classpath
-.c9/
-*.launch
-.settings/
-*.sublime-workspace
-
-# Visual Studio Code
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-!.vscode/mcp.json
-.history/*
-
-# Miscellaneous
-/.angular/cache
-.sass-cache/
-/connect.lock
-/coverage
-/libpeerconnection.log
-testem.log
-/typings
-__screenshots__/
-
-# System files
+# OS
 .DS_Store
 Thumbs.db
 
-*storybook.log
-storybook-static
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Node
+node_modules/
+npm-cache/
+.pnpm-store/
+
+# Angular build output
+dist/
+out-tsc/
+.angular/
+.cache/
+
+# Coverage
+coverage/
+
+# IDE
+.vscode/
+.idea/
+
+# System / temp
+.tmp/
+.temp/
+tmp/
+temp/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Storybook output
+storybook-static/
+
+# Sass cache
+.sass-cache/
+
+# Testing
+playwright-report/
+test-results/
+
+# Mac / Linux junk
+*.swp
+*.swo
+
+# Optional local configs
+firebase-debug.log
