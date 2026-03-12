@@ -1,0 +1,409 @@
+@use "sass:map";
+@use "sass:math";
+@use "../palette/schema" as schema;
+@use "../palette/primitives" as primitives;
+
+// Foundation colors
+// Theme-aware foundation color tokens mapped to palette tokens.
+
+// Semantic tokens should read from these maps, never directly from palette.
+
+@function alpha-ramp($base-color, $steps, $include-solid: true, $solid-key: 100) {
+  $result: ();
+
+  @if $include-solid {
+    $result: map.merge(
+      $result,
+      (
+        $solid-key: $base-color,
+      )
+    );
+  }
+
+  @each $step in $steps {
+    $result: map.merge(
+      $result,
+      (
+        $step: rgba($base-color, math.div($step, 100)),
+      )
+    );
+  }
+
+  @return $result;
+}
+
+@function alpha-ramp-extended($base-color) {
+  @return (
+    100: $base-color,
+    004: rgba($base-color, 0.04),
+    006: rgba($base-color, 0.06),
+    008: rgba($base-color, 0.08),
+    010: rgba($base-color, 0.1),
+    012: rgba($base-color, 0.12),
+    016: rgba($base-color, 0.16),
+    020: rgba($base-color, 0.2),
+    024: rgba($base-color, 0.24),
+    030: rgba($base-color, 0.3),
+    038: rgba($base-color, 0.38),
+    040: rgba($base-color, 0.4),
+    050: rgba($base-color, 0.5),
+    060: rgba($base-color, 0.6),
+    065: rgba($base-color, 0.65),
+    070: rgba($base-color, 0.7),
+    080: rgba($base-color, 0.8),
+  );
+}
+
+@function alpha-ramp-gray($base-color) {
+  @return (
+    004: rgba($base-color, 0.04),
+    006: rgba($base-color, 0.06),
+    008: rgba($base-color, 0.08),
+    012: rgba($base-color, 0.12),
+    016: rgba($base-color, 0.16),
+    020: rgba($base-color, 0.2),
+    024: rgba($base-color, 0.24),
+    030: rgba($base-color, 0.3),
+    038: rgba($base-color, 0.38),
+    040: rgba($base-color, 0.4),
+    050: rgba($base-color, 0.5),
+    060: rgba($base-color, 0.6),
+    065: rgba($base-color, 0.65),
+    070: rgba($base-color, 0.7),
+    080: rgba($base-color, 0.8),
+  );
+}
+
+@function alpha-ramp-black($base-color) {
+  @return (
+    032: rgba($base-color, 0.32),
+    080: rgba($base-color, 0.87),
+  );
+}
+
+$util-color-scales: (
+  amber: (
+    50: primitives.$amber-50,
+    400: primitives.$amber-400,
+    600: primitives.$amber-600,
+    950: primitives.$amber-950,
+  ),
+  blue: (
+    50: primitives.$blue-50,
+    400: primitives.$blue-400,
+    600: primitives.$blue-600,
+    950: primitives.$blue-950,
+  ),
+  cyan: (
+    50: primitives.$cyan-50,
+    400: primitives.$cyan-400,
+    600: primitives.$cyan-600,
+    950: primitives.$cyan-950,
+  ),
+  fuchsia: (
+    50: primitives.$fuchsia-50,
+    400: primitives.$fuchsia-400,
+    600: primitives.$fuchsia-600,
+    950: primitives.$fuchsia-950,
+  ),
+  green: (
+    50: primitives.$green-50,
+    400: primitives.$green-400,
+    600: primitives.$green-600,
+    950: primitives.$green-950,
+  ),
+  indigo: (
+    50: primitives.$indigo-50,
+    400: primitives.$indigo-400,
+    600: primitives.$indigo-600,
+    950: primitives.$indigo-950,
+  ),
+  lime: (
+    50: primitives.$lime-50,
+    400: primitives.$lime-400,
+    600: primitives.$lime-600,
+    950: primitives.$lime-950,
+  ),
+  orange: (
+    50: primitives.$orange-50,
+    400: primitives.$orange-400,
+    600: primitives.$orange-600,
+    950: primitives.$orange-950,
+  ),
+  pink: (
+    50: primitives.$pink-50,
+    400: primitives.$pink-400,
+    600: primitives.$pink-600,
+    950: primitives.$pink-950,
+  ),
+  purple: (
+    50: primitives.$purple-50,
+    400: primitives.$purple-400,
+    600: primitives.$purple-600,
+    950: primitives.$purple-950,
+  ),
+  red: (
+    50: primitives.$red-50,
+    400: primitives.$red-400,
+    600: primitives.$red-600,
+    950: primitives.$red-950,
+  ),
+  rose: (
+    50: primitives.$rose-50,
+    400: primitives.$rose-400,
+    600: primitives.$rose-600,
+    950: primitives.$rose-950,
+  ),
+  sky: (
+    50: primitives.$sky-50,
+    400: primitives.$sky-400,
+    600: primitives.$sky-600,
+    950: primitives.$sky-950,
+  ),
+  teal: (
+    50: primitives.$teal-50,
+    400: primitives.$teal-400,
+    600: primitives.$teal-600,
+    950: primitives.$teal-950,
+  ),
+  violet: (
+    50: primitives.$violet-50,
+    400: primitives.$violet-400,
+    600: primitives.$violet-600,
+    950: primitives.$violet-950,
+  ),
+  yellow: (
+    50: primitives.$yellow-50,
+    400: primitives.$yellow-400,
+    600: primitives.$yellow-600,
+    950: primitives.$yellow-950,
+  ),
+  zinc: (
+    50: primitives.$zinc-50,
+    400: primitives.$zinc-400,
+    600: primitives.$zinc-600,
+    950: primitives.$zinc-950,
+  ),
+);
+
+@function util-color-scale($step) {
+  $result: ();
+
+  @each $color-name, $scale-map in $util-color-scales {
+    $result: map.merge(
+      $result,
+      (
+        $color-name: map.get($scale-map, $step),
+      )
+    );
+  }
+
+  @return $result;
+}
+
+$foundation-colors-light: (
+  color: (
+    darkFixed: schema.$secondary-800,
+    scrim: primitives.$base-black,
+
+    primary: (
+      primary: schema.$primary-600,
+      onPrimary: primitives.$base-white,
+      primaryContainer: schema.$primary-50,
+      onPrimaryContainer: schema.$primary-950,
+      primaryFixed: schema.$primary-500,
+      onPrimaryFixed: primitives.$base-white,
+      primaryFixedDim: schema.$primary-600,
+    ),
+
+    secondary: (
+      secondary: schema.$secondary-600,
+      onSecondary: primitives.$base-white,
+      secondaryContainer: schema.$secondary-50,
+      onSecondaryContainer: schema.$secondary-900,
+      secondaryFixed: schema.$secondary-500,
+      onSecondaryFixed: primitives.$base-white,
+      secondaryFixedDim: schema.$secondary-600,
+      onSecondaryFixedVariant: schema.$secondary-300,
+    ),
+
+    error: (
+      error: primitives.$red-500,
+      onError: primitives.$base-white,
+      errorContainer: primitives.$red-600,
+      onErrorContainer: primitives.$red-200,
+    ),
+
+    tertiary: (
+      tertiary: schema.$tertiary-600,
+      onTertiary: schema.$tertiary-100,
+      tertiaryContainer: schema.$tertiary-100,
+      onTertiaryContainer: schema.$tertiary-950,
+      tertiaryFixed: schema.$tertiary-200,
+      onTertiaryFixed: schema.$tertiary-900,
+      tertiaryFixedDim: schema.$tertiary-400,
+      onTertiaryFixedDim: schema.$tertiary-950,
+      onTertiaryFixedVariant: schema.$tertiary-950,
+    ),
+
+    outline: (
+      outline: schema.$secondary-200,
+      outlineVariant: schema.$secondary-100,
+    ),
+
+    surface: (
+      background: schema.$secondary-100,
+      surface: primitives.$base-white,
+      surfaceContainer: schema.$secondary-100,
+      surfaceContainerHigh: schema.$secondary-50,
+      onBackground: schema.$secondary-950,
+      onSurface: schema.$secondary-950,
+      onSurfaceVariant: schema.$secondary-500,
+    ),
+
+    inverse: (
+      inverseSurface: schema.$secondary-950,
+      inverseOnSurface: primitives.$base-white,
+      inversePrimary: schema.$primary-400,
+    ),
+
+    states: (
+      success: schema.$success-600,
+      warning: schema.$warning-500,
+      alert: primitives.$yellow-400,
+      info: schema.$tertiary-600,
+    ),
+
+    alpha: (
+      transparent: rgba(primitives.$base-black, 0.001),
+      onSurface: alpha-ramp(schema.$secondary-950, (4, 6, 8, 12, 16, 24, 30, 38, 50, 60, 70, 80)),
+      primary: alpha-ramp(schema.$primary-600, (4, 6, 8, 12, 16, 20, 24, 30, 38, 40, 50, 60, 65, 70, 80)),
+      gray: alpha-ramp(schema.$secondary-500, (4, 6, 8, 12, 16, 20, 24, 30, 38, 40, 50, 60, 65, 70, 80), false),
+      red: alpha-ramp(primitives.$red-600, (4, 6, 8, 12, 16, 20, 24, 30, 38, 40, 50, 60, 65, 70, 80)),
+      black: alpha-ramp(primitives.$base-black, (32, 87), false),
+      green: alpha-ramp(schema.$success-600, (4, 6, 8, 10, 12, 16, 20, 24, 30, 38, 40, 50, 60, 65, 70, 80)),
+      yellow: alpha-ramp(primitives.$yellow-400, (4, 6, 8, 10, 12, 16, 20, 24, 30, 38, 40, 50, 60, 65, 70, 80)),
+      orange: alpha-ramp(schema.$warning-500, (4, 6, 8, 10, 12, 16, 20, 24, 30, 38, 40, 50, 60, 65, 70, 80)),
+      purple: alpha-ramp(primitives.$purple-500, (4, 6, 8, 10, 12, 16, 20, 24, 30, 38, 40, 50, 60, 65, 70, 80)),
+    ),
+
+    util: (
+      surface: util-color-scale(50),
+      content: util-color-scale(600),
+    ),
+
+    shadow: (
+      shadow-15: rgba(0, 0, 0, 0.15),
+      shadow-30: rgba(0, 0, 0, 0.3),
+    ),
+  ),
+);
+
+$foundation-colors-dark: (
+  color: (
+    darkFixed: schema.$secondary-800,
+    scrim: primitives.$base-black,
+
+    primary: (
+      primary: schema.$primary-600,
+      onPrimary: primitives.$base-white,
+      primaryContainer: schema.$primary-950,
+      onPrimaryContainer: schema.$primary-200,
+      primaryFixed: schema.$primary-500,
+      onPrimaryFixed: primitives.$base-white,
+      primaryFixedDim: schema.$primary-600,
+    ),
+
+    secondary: (
+      secondary: schema.$secondary-600,
+      onSecondary: primitives.$base-white,
+      secondaryContainer: schema.$secondary-900,
+      onSecondaryContainer: schema.$secondary-100,
+      secondaryFixed: schema.$secondary-500,
+      onSecondaryFixed: primitives.$base-white,
+      secondaryFixedDim: schema.$secondary-600,
+      onSecondaryFixedVariant: schema.$secondary-300,
+    ),
+
+    error: (
+      error: primitives.$red-500,
+      onError: primitives.$base-white,
+      errorContainer: primitives.$red-700,
+      onErrorContainer: primitives.$red-200,
+    ),
+
+    tertiary: (
+      tertiary: schema.$tertiary-500,
+      onTertiary: schema.$tertiary-950,
+      tertiaryContainer: schema.$tertiary-900,
+      onTertiaryContainer: schema.$tertiary-200,
+      tertiaryFixed: schema.$tertiary-200,
+      onTertiaryFixed: schema.$tertiary-900,
+      tertiaryFixedDim: schema.$tertiary-400,
+      onTertiaryFixedDim: schema.$tertiary-950,
+      onTertiaryFixedVariant: schema.$tertiary-950,
+    ),
+
+    outline: (
+      outline: schema.$secondary-700,
+      outlineVariant: schema.$secondary-800,
+    ),
+
+    surface: (
+      background: schema.$secondary-950,
+      surface: schema.$secondary-900,
+      surfaceContainer: schema.$secondary-800,
+      surfaceContainerHigh: schema.$secondary-700,
+      onBackground: schema.$secondary-100,
+      onSurface: schema.$secondary-50,
+      onSurfaceVariant: schema.$secondary-400,
+    ),
+
+    inverse: (
+      inverseSurface: schema.$secondary-100,
+      inverseOnSurface: schema.$secondary-950,
+      inversePrimary: schema.$primary-500,
+    ),
+
+    states: (
+      success: schema.$success-500,
+      warning: schema.$warning-500,
+      alert: primitives.$yellow-300,
+      info: schema.$tertiary-400,
+    ),
+
+    alpha: (
+      transparent: rgba(primitives.$base-black, 0.001),
+      onSurface: alpha-ramp(schema.$secondary-50, (4, 6, 8, 12, 16, 24, 30, 38, 50, 60, 70, 80)),
+      primary: alpha-ramp(schema.$primary-600, (4, 6, 8, 12, 16, 20, 24, 30, 38, 40, 50, 60, 65, 70, 80)),
+      gray: alpha-ramp(schema.$secondary-500, (4, 6, 8, 12, 16, 20, 24, 30, 38, 40, 50, 60, 65, 70, 80), false),
+      red: alpha-ramp(primitives.$red-600, (4, 6, 8, 12, 16, 20, 24, 30, 38, 40, 50, 60, 65, 70, 80)),
+      black: alpha-ramp(primitives.$base-black, (32, 87), false),
+      green: alpha-ramp(schema.$success-500, (4, 6, 8, 10, 12, 16, 20, 24, 30, 38, 40, 50, 60, 65, 70, 80)),
+      yellow: alpha-ramp(primitives.$yellow-400, (4, 6, 8, 10, 12, 16, 20, 24, 30, 38, 40, 50, 60, 65, 70, 80)),
+      orange: alpha-ramp(schema.$warning-500, (4, 6, 8, 10, 12, 16, 20, 24, 30, 38, 40, 50, 60, 65, 70, 80)),
+      purple: alpha-ramp(primitives.$purple-500, (4, 6, 8, 10, 12, 16, 20, 24, 30, 38, 40, 50, 60, 65, 70, 80)),
+    ),
+
+    util: (
+      surface: util-color-scale(950),
+      content: util-color-scale(400),
+    ),
+
+    shadow: (
+      shadow-15: rgba(0, 0, 0, 0.15),
+      shadow-30: rgba(0, 0, 0, 0.3),
+    ),
+  ),
+);
+
+@function foundation-color($theme, $group, $token, $subtoken: null) {
+  $theme-map: if($theme == dark, $foundation-colors-dark, $foundation-colors-light);
+  $group-map: map.get($theme-map, color, $group);
+
+  @if $subtoken == null {
+    @return map.get($group-map, $token);
+  }
+
+  @return map.get($group-map, $token, $subtoken);
+}

@@ -1,0 +1,52 @@
+@use "@angular/material" as mat;
+
+/* Angular Material global setup (MDC-based). */
+@include mat.core();
+
+/* ------------------------------------------------------------------
+   IMPORTANT
+   - Angular Material's Sass theming APIs require real Sass colors.
+   - CSS variables like var(--color-primary-600) are NOT Sass colors and
+     will break palette/theme generation.
+   - We keep Material's theme object valid using built-in palettes.
+   - We apply OUR design tokens via CSS custom properties (tokens) and
+     component overrides (ex: _buttons.scss).
+   ------------------------------------------------------------------ */
+
+/* Light + Dark themes (Material 3 token generation) */
+$any-theme-light: mat.define-theme(
+  (
+    color: (
+      theme-type: light,
+      primary: mat.$azure-palette,
+      tertiary: mat.$blue-palette,
+    ),
+    density: (
+      scale: 0,
+    ),
+  )
+);
+
+$any-theme-dark: mat.define-theme(
+  (
+    color: (
+      theme-type: dark,
+      primary: mat.$azure-palette,
+      tertiary: mat.$blue-palette,
+    ),
+    density: (
+      scale: 0,
+    ),
+  )
+);
+
+/* Apply theme tokens for all components. */
+:root {
+  @include mat.all-component-themes($any-theme-light);
+}
+
+/* Our app switches theme via this attribute (matches your token files). */
+:root[data-theme="dark"] {
+  /* Only colors need to switch; typography/density stay the same. */
+  @include mat.all-component-colors($any-theme-dark);
+}

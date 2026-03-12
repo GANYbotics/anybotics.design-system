@@ -1,0 +1,226 @@
+@use '../../../tokens/semantic/colors' as semantic;
+@use '../../../tokens/foundation/colors' as foundation;
+
+:host {
+  display: block;
+  min-height: 100%;
+  background: #09090b;
+  color: #fafafa;
+}
+
+.preview-page {
+  padding: 32px;
+}
+
+.preview-header {
+  margin-bottom: 32px;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  color: #9f9fa9;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 0 0 8px;
+  font-size: 32px;
+  line-height: 40px;
+}
+
+.intro {
+  margin: 0;
+  max-width: 720px;
+  color: #d4d4d8;
+}
+
+.preview-section {
+  margin-bottom: 40px;
+}
+
+.section-header {
+  margin-bottom: 16px;
+
+  h2 {
+    margin: 0 0 4px;
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  p {
+    margin: 0;
+    color: #9f9fa9;
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
+
+.token-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.token-card {
+  padding: 12px;
+  border: 1px solid #3f3f46;
+  border-radius: 12px;
+  background: #18181b;
+  align-content: start;
+}
+
+.token-swatch-shell {
+  overflow: hidden;
+  height: 96px;
+  margin-bottom: 12px;
+  border: 1px solid #3f3f46;
+  border-radius: 10px;
+  background: #27272a;
+}
+
+.token-swatch-shell.is-alpha {
+  background-image:
+    linear-gradient(45deg, #18181b 25%, transparent 25%),
+    linear-gradient(-45deg, #18181b 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #18181b 75%),
+    linear-gradient(-45deg, transparent 75%, #18181b 75%);
+  background-position: 0 0, 0 8px, 8px -8px, -8px 0;
+  background-size: 16px 16px;
+}
+
+.token-swatch {
+  width: 100%;
+  height: 100%;
+}
+
+.token-meta {
+  display: grid;
+  gap: 6px;
+}
+
+.token-name {
+  font-size: 12px;
+  line-height: 16px;
+  color: #fafafa;
+  word-break: break-word;
+}
+
+.token-dependencies {
+  display: grid;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.dependency-item {
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+}
+
+.dependency-pill {
+  width: 100%;
+  display: grid;
+  gap: 2px;
+  padding: 8px 10px;
+  border: 1px solid #3f3f46;
+  border-radius: 10px;
+  background: #27272a;
+}
+
+.dependency-label {
+  color: #9f9fa9;
+  font-size: 10px;
+  line-height: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.dependency-value {
+  color: #fafafa;
+  font-size: 12px;
+  line-height: 16px;
+  word-break: break-word;
+}
+
+.dependency-arrow {
+  color: #71717a;
+  font-size: 16px;
+  line-height: 16px;
+}
+
+.swatch-role-bg-canvas { background: semantic.$role-bg-canvas; }
+.swatch-role-bg-surface { background: semantic.$role-bg-surface; }
+.swatch-role-bg-surface-alt { background: semantic.$role-bg-surface-alt; }
+.swatch-role-bg-surface-elevated { background: semantic.$role-bg-surface-elevated; }
+.swatch-role-bg-action-primary { background: semantic.$role-bg-action-primary; }
+.swatch-role-bg-error { background: semantic.$role-bg-error; }
+.swatch-role-bg-success { background: semantic.$role-bg-success; }
+.swatch-role-bg-warning { background: semantic.$role-bg-warning; }
+.swatch-role-bg-alert { background: semantic.$role-bg-alert; }
+.swatch-role-bg-info { background: semantic.$role-bg-info; }
+.swatch-role-bg-inverse { background: semantic.$role-bg-inverse; }
+
+.swatch-role-text-primary { background: semantic.$role-text-primary; }
+.swatch-role-text-secondary { background: semantic.$role-text-secondary; }
+.swatch-role-text-inverse { background: semantic.$role-text-inverse; }
+.swatch-role-text-action-primary { background: semantic.$role-text-action-primary; }
+.swatch-role-text-on-action-primary { background: semantic.$role-text-on-action-primary; }
+.swatch-role-text-error { background: semantic.$role-text-error; }
+.swatch-role-text-on-error { background: semantic.$role-text-on-error; }
+.swatch-role-text-success { background: semantic.$role-text-success; }
+.swatch-role-text-warning { background: semantic.$role-text-warning; }
+.swatch-role-text-info { background: semantic.$role-text-info; }
+
+.swatch-role-border-default { background: semantic.$role-border-default; }
+.swatch-role-border-subtle { background: semantic.$role-border-subtle; }
+.swatch-role-border-selected { background: semantic.$role-border-selected; }
+.swatch-role-border-error { background: semantic.$role-border-error; }
+.swatch-role-border-success { background: semantic.$role-border-success; }
+.swatch-role-border-warning { background: semantic.$role-border-warning; }
+.swatch-role-border-info { background: semantic.$role-border-info; }
+
+.swatch-state-interaction-hover { background: semantic.$state-interaction-hover; }
+.swatch-state-interaction-pressed { background: semantic.$state-interaction-pressed; }
+.swatch-state-interaction-focus { background: semantic.$state-interaction-focus; }
+.swatch-state-interaction-selected { background: semantic.$state-interaction-selected; }
+.swatch-state-disabled-bg { background: semantic.$state-disabled-bg; }
+.swatch-state-disabled-border { background: semantic.$state-disabled-border; }
+.swatch-state-disabled-content { background: semantic.$state-disabled-content; }
+
+.swatch-util-surface-amber { background: foundation.foundation-color(dark, util, surface, amber); }
+.swatch-util-surface-blue { background: foundation.foundation-color(dark, util, surface, blue); }
+.swatch-util-surface-cyan { background: foundation.foundation-color(dark, util, surface, cyan); }
+.swatch-util-surface-fuchsia { background: foundation.foundation-color(dark, util, surface, fuchsia); }
+.swatch-util-surface-green { background: foundation.foundation-color(dark, util, surface, green); }
+.swatch-util-surface-indigo { background: foundation.foundation-color(dark, util, surface, indigo); }
+.swatch-util-surface-lime { background: foundation.foundation-color(dark, util, surface, lime); }
+.swatch-util-surface-orange { background: foundation.foundation-color(dark, util, surface, orange); }
+.swatch-util-surface-pink { background: foundation.foundation-color(dark, util, surface, pink); }
+.swatch-util-surface-purple { background: foundation.foundation-color(dark, util, surface, purple); }
+.swatch-util-surface-red { background: foundation.foundation-color(dark, util, surface, red); }
+.swatch-util-surface-rose { background: foundation.foundation-color(dark, util, surface, rose); }
+.swatch-util-surface-sky { background: foundation.foundation-color(dark, util, surface, sky); }
+.swatch-util-surface-teal { background: foundation.foundation-color(dark, util, surface, teal); }
+.swatch-util-surface-violet { background: foundation.foundation-color(dark, util, surface, violet); }
+.swatch-util-surface-yellow { background: foundation.foundation-color(dark, util, surface, yellow); }
+.swatch-util-surface-zinc { background: foundation.foundation-color(dark, util, surface, zinc); }
+
+.swatch-util-content-amber { background: foundation.foundation-color(dark, util, content, amber); }
+.swatch-util-content-blue { background: foundation.foundation-color(dark, util, content, blue); }
+.swatch-util-content-cyan { background: foundation.foundation-color(dark, util, content, cyan); }
+.swatch-util-content-fuchsia { background: foundation.foundation-color(dark, util, content, fuchsia); }
+.swatch-util-content-green { background: foundation.foundation-color(dark, util, content, green); }
+.swatch-util-content-indigo { background: foundation.foundation-color(dark, util, content, indigo); }
+.swatch-util-content-lime { background: foundation.foundation-color(dark, util, content, lime); }
+.swatch-util-content-orange { background: foundation.foundation-color(dark, util, content, orange); }
+.swatch-util-content-pink { background: foundation.foundation-color(dark, util, content, pink); }
+.swatch-util-content-purple { background: foundation.foundation-color(dark, util, content, purple); }
+.swatch-util-content-red { background: foundation.foundation-color(dark, util, content, red); }
+.swatch-util-content-rose { background: foundation.foundation-color(dark, util, content, rose); }
+.swatch-util-content-sky { background: foundation.foundation-color(dark, util, content, sky); }
+.swatch-util-content-teal { background: foundation.foundation-color(dark, util, content, teal); }
+.swatch-util-content-violet { background: foundation.foundation-color(dark, util, content, violet); }
+.swatch-util-content-yellow { background: foundation.foundation-color(dark, util, content, yellow); }
+.swatch-util-content-zinc { background: foundation.foundation-color(dark, util, content, zinc); }

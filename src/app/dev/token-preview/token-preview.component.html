@@ -1,0 +1,38 @@
+<section class="preview-page">
+  <header class="preview-header">
+    <p class="eyebrow">Design tokens</p>
+    <h1>Token preview</h1>
+    <p class="intro">
+      Quick visual check for semantic and foundation color tokens.
+    </p>
+  </header>
+
+  <section class="preview-section" *ngFor="let section of darkSections">
+    <div class="section-header">
+      <h2>{{ section.title }}</h2>
+      <p *ngIf="section.description">{{ section.description }}</p>
+    </div>
+
+    <div class="token-grid">
+      <article class="token-card" *ngFor="let token of section.tokens; trackBy: trackByTokenName">
+        <div class="token-swatch-shell" [class.is-alpha]="token.kind === 'alpha'">
+          <div class="token-swatch" [class]="'token-swatch ' + (token.swatchClass || '')"></div>
+        </div>
+
+        <div class="token-meta">
+          <code class="token-name">{{ token.name }}</code>
+        </div>
+
+        <div class="token-dependencies" *ngIf="token.dependencies?.length">
+          <div class="dependency-item" *ngFor="let dependency of token.dependencies; let last = last">
+            <div class="dependency-pill">
+              <span class="dependency-label">{{ dependency.label }}</span>
+              <span class="dependency-value">{{ dependency.value }}</span>
+            </div>
+            <span class="dependency-arrow" *ngIf="!last">↓</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+</section>

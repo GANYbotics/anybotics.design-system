@@ -1,0 +1,120 @@
+@use "sass:map";
+
+// Foundation metrics
+// Base metric tokens exported from Figma Variables.
+// Semantic tokens should alias these values instead of redefining them.
+
+// Space
+$space-0: 0px;
+$space-2: 2px;
+$space-4: 4px;
+$space-6: 6px;
+$space-8: 8px;
+$space-12: 12px;
+$space-16: 16px;
+$space-20: 20px;
+$space-24: 24px;
+$space-32: 32px;
+$space-40: 40px;
+$space-48: 48px;
+
+// Size
+$size-4: 4px;
+$size-8: 8px;
+$size-12: 12px;
+$size-16: 16px;
+$size-18: 18px;
+$size-20: 20px;
+$size-24: 24px;
+$size-32: 32px;
+$size-40: 40px;
+$size-48: 48px;
+$size-56: 56px;
+$size-64: 64px;
+$size-80: 80px;
+$size-96: 96px;
+$size-132: 132px;
+$size-160: 160px;
+
+// Radius
+$radius-none: 0px;
+$radius-2: 2px;
+$radius-4: 4px;
+$radius-6: 6px;
+$radius-8: 8px;
+$radius-12: 12px;
+$radius-16: 16px;
+$radius-20: 20px;
+$radius-full: 999px;
+
+// Optional token registry
+//
+// The `$foundation-metrics` map groups all metric tokens (space, size, radius)
+// in a single structure. This enables dynamic access to tokens via the
+// `foundation-metric()` function instead of referencing variables directly.
+//
+// Example:
+// padding: foundation-metric(space, 16);
+//
+// This approach can be useful for:
+// - generating utility classes with Sass loops
+// - iterating over tokens programmatically
+// - exposing tokens through a single structured API
+//
+// However, it is not required for normal usage. Developers can also reference
+// the variables directly:
+//
+// padding: $space-16;
+//
+// If the project does not require dynamic token access or Sass iteration,
+// this map and the helper function can be safely removed to simplify the code.
+
+$foundation-metrics: (
+  space: (
+    0: $space-0,
+    2: $space-2,
+    4: $space-4,
+    6: $space-6,
+    8: $space-8,
+    12: $space-12,
+    16: $space-16,
+    20: $space-20,
+    24: $space-24,
+    32: $space-32,
+    40: $space-40,
+    48: $space-48,
+  ),
+  size: (
+    4: $size-4,
+    8: $size-8,
+    12: $size-12,
+    16: $size-16,
+    18: $size-18,
+    20: $size-20,
+    24: $size-24,
+    32: $size-32,
+    40: $size-40,
+    48: $size-48,
+    56: $size-56,
+    64: $size-64,
+    80: $size-80,
+    96: $size-96,
+    132: $size-132,
+    160: $size-160,
+  ),
+  radius: (
+    none: $radius-none,
+    2: $radius-2,
+    4: $radius-4,
+    6: $radius-6,
+    8: $radius-8,
+    12: $radius-12,
+    16: $radius-16,
+    20: $radius-20,
+    full: $radius-full,
+  ),
+);
+
+@function foundation-metric($group, $token) {
+  @return map.get($foundation-metrics, $group, $token);
+}

@@ -1,0 +1,109 @@
+@use "../foundation/colors" as foundation;
+
+// Semantic colors
+// Role-based tokens for product usage.
+// These tokens should point to foundation tokens whenever a foundation alias exists.
+// A small number of tokens are still defined with raw color values because their
+// corresponding foundation alpha/util groups have not been extracted yet.
+
+// Role / background
+$role-bg-canvas: foundation.foundation-color(dark, surface, background);
+$role-bg-surface: foundation.foundation-color(dark, surface, surface);
+$role-bg-surface-alt: foundation.foundation-color(dark, surface, surfaceContainer);
+$role-bg-surface-elevated: foundation.foundation-color(dark, surface, surfaceContainerHigh);
+$role-bg-action-primary: foundation.foundation-color(dark, primary, primary);
+$role-bg-error: foundation.foundation-color(dark, error, errorContainer);
+$role-bg-success: foundation.foundation-color(dark, states, success);
+$role-bg-warning: foundation.foundation-color(dark, states, warning);
+$role-bg-alert: foundation.foundation-color(dark, states, alert);
+$role-bg-info: foundation.foundation-color(dark, tertiary, tertiaryContainer);
+$role-bg-inverse: foundation.foundation-color(dark, inverse, inverseSurface);
+
+// Role / text
+$role-text-primary: foundation.foundation-color(dark, surface, onSurface);
+$role-text-secondary: foundation.foundation-color(dark, surface, onSurfaceVariant);
+$role-text-inverse: foundation.foundation-color(dark, inverse, inverseOnSurface);
+$role-text-action-primary: foundation.foundation-color(dark, primary, primaryFixed);
+$role-text-on-action-primary: foundation.foundation-color(dark, primary, onPrimary);
+$role-text-error: foundation.foundation-color(dark, error, error);
+$role-text-on-error: foundation.foundation-color(dark, error, onError);
+$role-text-success: foundation.foundation-color(dark, states, success);
+$role-text-warning: foundation.foundation-color(dark, states, warning);
+$role-text-info: foundation.foundation-color(dark, states, info);
+
+// Role / icon
+$role-icon-primary: foundation.foundation-color(dark, surface, onSurface);
+$role-icon-secondary: foundation.foundation-color(dark, surface, onSurfaceVariant);
+$role-icon-inverse: foundation.foundation-color(dark, inverse, inverseOnSurface);
+$role-icon-action-primary: foundation.foundation-color(dark, primary, primaryFixed);
+$role-icon-on-action-primary: foundation.foundation-color(dark, primary, onPrimary);
+$role-icon-error: foundation.foundation-color(dark, error, error);
+$role-icon-on-error: foundation.foundation-color(dark, error, onError);
+$role-icon-success: foundation.foundation-color(dark, states, success);
+$role-icon-warning: foundation.foundation-color(dark, states, warning);
+$role-icon-info: foundation.foundation-color(dark, states, info);
+
+// Role / border
+$role-border-default: foundation.foundation-color(dark, outline, outline);
+$role-border-subtle: foundation.foundation-color(dark, outline, outlineVariant);
+$role-border-selected: foundation.foundation-color(dark, primary, primaryFixed);
+$role-border-error: foundation.foundation-color(dark, error, error);
+$role-border-success: foundation.foundation-color(dark, states, success);
+$role-border-warning: foundation.foundation-color(dark, states, warning);
+$role-border-info: foundation.foundation-color(dark, states, info);
+
+// State / interaction
+$state-interaction-hover: foundation.foundation-color(dark, alpha, onSurface, 004);
+$state-interaction-pressed: foundation.foundation-color(dark, alpha, onSurface, 008);
+$state-interaction-focus: foundation.foundation-color(dark, alpha, onSurface, 012);
+$state-interaction-selected: foundation.foundation-color(dark, alpha, primary, 020);
+
+// State / disabled
+$state-disabled-bg: foundation.foundation-color(dark, alpha, onSurface, 012);
+$state-disabled-border: foundation.foundation-color(dark, alpha, onSurface, 012);
+$state-disabled-content: foundation.foundation-color(dark, alpha, onSurface, 038);
+
+// Context / on dark
+$context-on-dark-text: foundation.foundation-color(dark, inverse, inverseOnSurface);
+$context-on-dark-icon: foundation.foundation-color(dark, inverse, inverseOnSurface);
+$context-on-dark-border: foundation.foundation-color(dark, alpha, onSurface, 030);
+$context-on-dark-bg-overlay-hover: foundation.foundation-color(dark, alpha, onSurface, 008);
+$context-on-dark-bg-overlay-pressed: foundation.foundation-color(dark, alpha, onSurface, 012);
+
+// Context / background utils
+$context-bg-utils-bg-amber: foundation.foundation-color(dark, util, surface, amber);
+$context-bg-utils-bg-blue: foundation.foundation-color(dark, util, surface, blue);
+$context-bg-utils-bg-cyan: foundation.foundation-color(dark, util, surface, cyan);
+$context-bg-utils-bg-fuchsia: foundation.foundation-color(dark, util, surface, fuchsia);
+$context-bg-utils-bg-green: foundation.foundation-color(dark, util, surface, green);
+$context-bg-utils-bg-indigo: foundation.foundation-color(dark, util, surface, indigo);
+$context-bg-utils-bg-lime: foundation.foundation-color(dark, util, surface, lime);
+$context-bg-utils-bg-orange: foundation.foundation-color(dark, util, surface, orange);
+$context-bg-utils-bg-pink: foundation.foundation-color(dark, util, surface, pink);
+$context-bg-utils-bg-purple: foundation.foundation-color(dark, util, surface, purple);
+$context-bg-utils-bg-red: foundation.foundation-color(dark, util, surface, red);
+$context-bg-utils-bg-rose: foundation.foundation-color(dark, util, surface, rose);
+$context-bg-utils-bg-sky: foundation.foundation-color(dark, util, surface, sky);
+$context-bg-utils-bg-teal: foundation.foundation-color(dark, util, surface, teal);
+$context-bg-utils-bg-violet: foundation.foundation-color(dark, util, surface, violet);
+$context-bg-utils-bg-yellow: foundation.foundation-color(dark, util, surface, yellow);
+$context-bg-utils-bg-zinc: foundation.foundation-color(dark, util, surface, zinc);
+
+// Context / content utils
+$context-content-utils-content-amber: foundation.foundation-color(dark, util, content, amber);
+$context-content-utils-content-blue: foundation.foundation-color(dark, util, content, blue);
+$context-content-utils-content-cyan: foundation.foundation-color(dark, util, content, cyan);
+$context-content-utils-content-fuchsia: foundation.foundation-color(dark, util, content, fuchsia);
+$context-content-utils-content-green: foundation.foundation-color(dark, util, content, green);
+$context-content-utils-content-indigo: foundation.foundation-color(dark, util, content, indigo);
+$context-content-utils-content-lime: foundation.foundation-color(dark, util, content, lime);
+$context-content-utils-content-orange: foundation.foundation-color(dark, util, content, orange);
+$context-content-utils-content-pink: foundation.foundation-color(dark, util, content, pink);
+$context-content-utils-content-purple: foundation.foundation-color(dark, util, content, purple);
+$context-content-utils-content-red: foundation.foundation-color(dark, util, content, red);
+$context-content-utils-content-rose: foundation.foundation-color(dark, util, content, rose);
+$context-content-utils-content-sky: foundation.foundation-color(dark, util, content, sky);
+$context-content-utils-content-teal: foundation.foundation-color(dark, util, content, teal);
+$context-content-utils-content-violet: foundation.foundation-color(dark, util, content, violet);
+$context-content-utils-content-yellow: foundation.foundation-color(dark, util, content, yellow);
+$context-content-utils-content-zinc: foundation.foundation-color(dark, util, content, zinc);
