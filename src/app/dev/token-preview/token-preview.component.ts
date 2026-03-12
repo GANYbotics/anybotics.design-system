@@ -20,6 +20,8 @@ type TokenSection = {
   tokens: TokenItem[];
 };
 
+type PreviewTheme = 'dark' | 'light';
+
 @Component({
   selector: 'app-token-preview',
   standalone: true,
@@ -28,6 +30,15 @@ type TokenSection = {
   styleUrl: './token-preview.component.scss',
 })
 export class TokenPreviewComponent {
+  theme: PreviewTheme = 'dark';
+
+  setTheme(theme: PreviewTheme): void {
+    this.theme = theme;
+  }
+
+  get isDarkTheme(): boolean {
+    return this.theme === 'dark';
+  }
   readonly darkSections: TokenSection[] = [
     {
       title: 'Semantic · Role background',

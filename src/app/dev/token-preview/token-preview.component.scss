@@ -4,24 +4,49 @@
 :host {
   display: block;
   min-height: 100%;
+}
+
+.preview-page {
+  min-height: 100%;
+  padding: 32px;
+  color: #fafafa;
+  transition: background-color 160ms ease, color 160ms ease;
+}
+
+.preview-page.theme-dark {
   background: #09090b;
   color: #fafafa;
 }
 
-.preview-page {
-  padding: 32px;
+.preview-page.theme-light {
+  background: #fafafa;
+  color: #09090b;
 }
 
 .preview-header {
   margin-bottom: 32px;
 }
 
+.header-top-row {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
 .eyebrow {
   margin: 0 0 8px;
-  color: #9f9fa9;
   font-size: 12px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+}
+
+.theme-dark .eyebrow {
+  color: #9f9fa9;
+}
+
+.theme-light .eyebrow {
+  color: #52525b;
 }
 
 h1 {
@@ -33,7 +58,62 @@ h1 {
 .intro {
   margin: 0;
   max-width: 720px;
+}
+
+.theme-dark .intro {
   color: #d4d4d8;
+}
+
+.theme-light .intro {
+  color: #52525b;
+}
+
+.theme-switch {
+  display: inline-grid;
+  grid-auto-flow: column;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 12px;
+}
+
+.theme-dark .theme-switch {
+  border: 1px solid #3f3f46;
+  background: #18181b;
+}
+
+.theme-light .theme-switch {
+  border: 1px solid #d4d4d8;
+  background: #f4f4f5;
+}
+
+.theme-switch-button {
+  min-width: 72px;
+  padding: 8px 12px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  font: inherit;
+  cursor: pointer;
+  transition: background-color 160ms ease, color 160ms ease;
+}
+
+.theme-dark .theme-switch-button {
+  color: #a1a1aa;
+}
+
+.theme-light .theme-switch-button {
+  color: #52525b;
+}
+
+.theme-dark .theme-switch-button.is-active {
+  background: #3f3f46;
+  color: #fafafa;
+}
+
+.theme-light .theme-switch-button.is-active {
+  background: #ffffff;
+  color: #09090b;
+  box-shadow: inset 0 0 0 1px #d4d4d8;
 }
 
 .preview-section {
@@ -51,10 +131,17 @@ h1 {
 
   p {
     margin: 0;
-    color: #9f9fa9;
     font-size: 14px;
     line-height: 20px;
   }
+}
+
+.theme-dark .section-header p {
+  color: #9f9fa9;
+}
+
+.theme-light .section-header p {
+  color: #52525b;
 }
 
 .token-grid {
@@ -65,27 +152,54 @@ h1 {
 
 .token-card {
   padding: 12px;
-  border: 1px solid #3f3f46;
   border-radius: 12px;
-  background: #18181b;
   align-content: start;
+  transition: background-color 160ms ease, border-color 160ms ease;
+}
+
+.theme-dark .token-card {
+  border: 1px solid #3f3f46;
+  background: #18181b;
+}
+
+.theme-light .token-card {
+  border: 1px solid #d4d4d8;
+  background: #ffffff;
 }
 
 .token-swatch-shell {
   overflow: hidden;
   height: 96px;
   margin-bottom: 12px;
-  border: 1px solid #3f3f46;
   border-radius: 10px;
+}
+
+.theme-dark .token-swatch-shell {
+  border: 1px solid #3f3f46;
   background: #27272a;
 }
 
-.token-swatch-shell.is-alpha {
+.theme-light .token-swatch-shell {
+  border: 1px solid #d4d4d8;
+  background: #f4f4f5;
+}
+
+.theme-dark .token-swatch-shell.is-alpha {
   background-image:
     linear-gradient(45deg, #18181b 25%, transparent 25%),
     linear-gradient(-45deg, #18181b 25%, transparent 25%),
     linear-gradient(45deg, transparent 75%, #18181b 75%),
     linear-gradient(-45deg, transparent 75%, #18181b 75%);
+  background-position: 0 0, 0 8px, 8px -8px, -8px 0;
+  background-size: 16px 16px;
+}
+
+.theme-light .token-swatch-shell.is-alpha {
+  background-image:
+    linear-gradient(45deg, #e4e4e7 25%, transparent 25%),
+    linear-gradient(-45deg, #e4e4e7 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #e4e4e7 75%),
+    linear-gradient(-45deg, transparent 75%, #e4e4e7 75%);
   background-position: 0 0, 0 8px, 8px -8px, -8px 0;
   background-size: 16px 16px;
 }
@@ -103,8 +217,29 @@ h1 {
 .token-name {
   font-size: 12px;
   line-height: 16px;
-  color: #fafafa;
   word-break: break-word;
+}
+
+.theme-dark .token-name {
+  color: #fafafa;
+}
+
+.theme-light .token-name {
+  color: #09090b;
+}
+
+.token-value {
+  font-size: 12px;
+  line-height: 16px;
+  word-break: break-word;
+}
+
+.theme-dark .token-value {
+  color: #9f9fa9;
+}
+
+.theme-light .token-value {
+  color: #52525b;
 }
 
 .token-dependencies {
@@ -124,103 +259,218 @@ h1 {
   display: grid;
   gap: 2px;
   padding: 8px 10px;
-  border: 1px solid #3f3f46;
   border-radius: 10px;
+}
+
+.theme-dark .dependency-pill {
+  border: 1px solid #3f3f46;
   background: #27272a;
 }
 
+.theme-light .dependency-pill {
+  border: 1px solid #d4d4d8;
+  background: #f4f4f5;
+}
+
 .dependency-label {
-  color: #9f9fa9;
   font-size: 10px;
   line-height: 12px;
   text-transform: uppercase;
   letter-spacing: 0.06em;
 }
 
+.theme-dark .dependency-label {
+  color: #9f9fa9;
+}
+
+.theme-light .dependency-label {
+  color: #52525b;
+}
+
 .dependency-value {
-  color: #fafafa;
   font-size: 12px;
   line-height: 16px;
   word-break: break-word;
 }
 
+.theme-dark .dependency-value {
+  color: #fafafa;
+}
+
+.theme-light .dependency-value {
+  color: #09090b;
+}
+
 .dependency-arrow {
-  color: #71717a;
   font-size: 16px;
   line-height: 16px;
 }
 
-.swatch-role-bg-canvas { background: semantic.$role-bg-canvas; }
-.swatch-role-bg-surface { background: semantic.$role-bg-surface; }
-.swatch-role-bg-surface-alt { background: semantic.$role-bg-surface-alt; }
-.swatch-role-bg-surface-elevated { background: semantic.$role-bg-surface-elevated; }
-.swatch-role-bg-action-primary { background: semantic.$role-bg-action-primary; }
-.swatch-role-bg-error { background: semantic.$role-bg-error; }
-.swatch-role-bg-success { background: semantic.$role-bg-success; }
-.swatch-role-bg-warning { background: semantic.$role-bg-warning; }
-.swatch-role-bg-alert { background: semantic.$role-bg-alert; }
-.swatch-role-bg-info { background: semantic.$role-bg-info; }
-.swatch-role-bg-inverse { background: semantic.$role-bg-inverse; }
+.theme-dark .dependency-arrow {
+  color: #71717a;
+}
 
-.swatch-role-text-primary { background: semantic.$role-text-primary; }
-.swatch-role-text-secondary { background: semantic.$role-text-secondary; }
-.swatch-role-text-inverse { background: semantic.$role-text-inverse; }
-.swatch-role-text-action-primary { background: semantic.$role-text-action-primary; }
-.swatch-role-text-on-action-primary { background: semantic.$role-text-on-action-primary; }
-.swatch-role-text-error { background: semantic.$role-text-error; }
-.swatch-role-text-on-error { background: semantic.$role-text-on-error; }
-.swatch-role-text-success { background: semantic.$role-text-success; }
-.swatch-role-text-warning { background: semantic.$role-text-warning; }
-.swatch-role-text-info { background: semantic.$role-text-info; }
+.theme-light .dependency-arrow {
+  color: #71717a;
+}
 
-.swatch-role-border-default { background: semantic.$role-border-default; }
-.swatch-role-border-subtle { background: semantic.$role-border-subtle; }
-.swatch-role-border-selected { background: semantic.$role-border-selected; }
-.swatch-role-border-error { background: semantic.$role-border-error; }
-.swatch-role-border-success { background: semantic.$role-border-success; }
-.swatch-role-border-warning { background: semantic.$role-border-warning; }
-.swatch-role-border-info { background: semantic.$role-border-info; }
+.theme-dark .swatch-role-bg-canvas { background: semantic.$role-bg-canvas; }
+.theme-dark .swatch-role-bg-surface { background: semantic.$role-bg-surface; }
+.theme-dark .swatch-role-bg-surface-alt { background: semantic.$role-bg-surface-alt; }
+.theme-dark .swatch-role-bg-surface-elevated { background: semantic.$role-bg-surface-elevated; }
+.theme-dark .swatch-role-bg-action-primary { background: semantic.$role-bg-action-primary; }
+.theme-dark .swatch-role-bg-error { background: semantic.$role-bg-error; }
+.theme-dark .swatch-role-bg-success { background: semantic.$role-bg-success; }
+.theme-dark .swatch-role-bg-warning { background: semantic.$role-bg-warning; }
+.theme-dark .swatch-role-bg-alert { background: semantic.$role-bg-alert; }
+.theme-dark .swatch-role-bg-info { background: semantic.$role-bg-info; }
+.theme-dark .swatch-role-bg-inverse { background: semantic.$role-bg-inverse; }
 
-.swatch-state-interaction-hover { background: semantic.$state-interaction-hover; }
-.swatch-state-interaction-pressed { background: semantic.$state-interaction-pressed; }
-.swatch-state-interaction-focus { background: semantic.$state-interaction-focus; }
-.swatch-state-interaction-selected { background: semantic.$state-interaction-selected; }
-.swatch-state-disabled-bg { background: semantic.$state-disabled-bg; }
-.swatch-state-disabled-border { background: semantic.$state-disabled-border; }
-.swatch-state-disabled-content { background: semantic.$state-disabled-content; }
+.theme-light .swatch-role-bg-canvas { background: foundation.foundation-color(light, surface, background); }
+.theme-light .swatch-role-bg-surface { background: foundation.foundation-color(light, surface, surface); }
+.theme-light .swatch-role-bg-surface-alt { background: foundation.foundation-color(light, surface, surfaceContainer); }
+.theme-light .swatch-role-bg-surface-elevated { background: foundation.foundation-color(light, surface, surfaceContainerHigh); }
+.theme-light .swatch-role-bg-action-primary { background: foundation.foundation-color(light, primary, primary); }
+.theme-light .swatch-role-bg-error { background: foundation.foundation-color(light, error, errorContainer); }
+.theme-light .swatch-role-bg-success { background: foundation.foundation-color(light, states, success); }
+.theme-light .swatch-role-bg-warning { background: foundation.foundation-color(light, states, warning); }
+.theme-light .swatch-role-bg-alert { background: foundation.foundation-color(light, states, alert); }
+.theme-light .swatch-role-bg-info { background: foundation.foundation-color(light, tertiary, tertiaryContainer); }
+.theme-light .swatch-role-bg-inverse { background: foundation.foundation-color(light, inverse, inverseSurface); }
 
-.swatch-util-surface-amber { background: foundation.foundation-color(dark, util, surface, amber); }
-.swatch-util-surface-blue { background: foundation.foundation-color(dark, util, surface, blue); }
-.swatch-util-surface-cyan { background: foundation.foundation-color(dark, util, surface, cyan); }
-.swatch-util-surface-fuchsia { background: foundation.foundation-color(dark, util, surface, fuchsia); }
-.swatch-util-surface-green { background: foundation.foundation-color(dark, util, surface, green); }
-.swatch-util-surface-indigo { background: foundation.foundation-color(dark, util, surface, indigo); }
-.swatch-util-surface-lime { background: foundation.foundation-color(dark, util, surface, lime); }
-.swatch-util-surface-orange { background: foundation.foundation-color(dark, util, surface, orange); }
-.swatch-util-surface-pink { background: foundation.foundation-color(dark, util, surface, pink); }
-.swatch-util-surface-purple { background: foundation.foundation-color(dark, util, surface, purple); }
-.swatch-util-surface-red { background: foundation.foundation-color(dark, util, surface, red); }
-.swatch-util-surface-rose { background: foundation.foundation-color(dark, util, surface, rose); }
-.swatch-util-surface-sky { background: foundation.foundation-color(dark, util, surface, sky); }
-.swatch-util-surface-teal { background: foundation.foundation-color(dark, util, surface, teal); }
-.swatch-util-surface-violet { background: foundation.foundation-color(dark, util, surface, violet); }
-.swatch-util-surface-yellow { background: foundation.foundation-color(dark, util, surface, yellow); }
-.swatch-util-surface-zinc { background: foundation.foundation-color(dark, util, surface, zinc); }
+.theme-dark .swatch-role-text-primary { background: semantic.$role-text-primary; }
+.theme-dark .swatch-role-text-secondary { background: semantic.$role-text-secondary; }
+.theme-dark .swatch-role-text-inverse { background: semantic.$role-text-inverse; }
+.theme-dark .swatch-role-text-action-primary { background: semantic.$role-text-action-primary; }
+.theme-dark .swatch-role-text-on-action-primary { background: semantic.$role-text-on-action-primary; }
+.theme-dark .swatch-role-text-error { background: semantic.$role-text-error; }
+.theme-dark .swatch-role-text-on-error { background: semantic.$role-text-on-error; }
+.theme-dark .swatch-role-text-success { background: semantic.$role-text-success; }
+.theme-dark .swatch-role-text-warning { background: semantic.$role-text-warning; }
+.theme-dark .swatch-role-text-info { background: semantic.$role-text-info; }
 
-.swatch-util-content-amber { background: foundation.foundation-color(dark, util, content, amber); }
-.swatch-util-content-blue { background: foundation.foundation-color(dark, util, content, blue); }
-.swatch-util-content-cyan { background: foundation.foundation-color(dark, util, content, cyan); }
-.swatch-util-content-fuchsia { background: foundation.foundation-color(dark, util, content, fuchsia); }
-.swatch-util-content-green { background: foundation.foundation-color(dark, util, content, green); }
-.swatch-util-content-indigo { background: foundation.foundation-color(dark, util, content, indigo); }
-.swatch-util-content-lime { background: foundation.foundation-color(dark, util, content, lime); }
-.swatch-util-content-orange { background: foundation.foundation-color(dark, util, content, orange); }
-.swatch-util-content-pink { background: foundation.foundation-color(dark, util, content, pink); }
-.swatch-util-content-purple { background: foundation.foundation-color(dark, util, content, purple); }
-.swatch-util-content-red { background: foundation.foundation-color(dark, util, content, red); }
-.swatch-util-content-rose { background: foundation.foundation-color(dark, util, content, rose); }
-.swatch-util-content-sky { background: foundation.foundation-color(dark, util, content, sky); }
-.swatch-util-content-teal { background: foundation.foundation-color(dark, util, content, teal); }
-.swatch-util-content-violet { background: foundation.foundation-color(dark, util, content, violet); }
-.swatch-util-content-yellow { background: foundation.foundation-color(dark, util, content, yellow); }
-.swatch-util-content-zinc { background: foundation.foundation-color(dark, util, content, zinc); }
+.theme-light .swatch-role-text-primary { background: foundation.foundation-color(light, surface, onSurface); }
+.theme-light .swatch-role-text-secondary { background: foundation.foundation-color(light, surface, onSurfaceVariant); }
+.theme-light .swatch-role-text-inverse { background: foundation.foundation-color(light, inverse, inverseOnSurface); }
+.theme-light .swatch-role-text-action-primary { background: foundation.foundation-color(light, primary, primaryFixed); }
+.theme-light .swatch-role-text-on-action-primary { background: foundation.foundation-color(light, primary, onPrimary); }
+.theme-light .swatch-role-text-error { background: foundation.foundation-color(light, error, error); }
+.theme-light .swatch-role-text-on-error { background: foundation.foundation-color(light, error, onError); }
+.theme-light .swatch-role-text-success { background: foundation.foundation-color(light, states, success); }
+.theme-light .swatch-role-text-warning { background: foundation.foundation-color(light, states, warning); }
+.theme-light .swatch-role-text-info { background: foundation.foundation-color(light, states, info); }
+
+.theme-dark .swatch-role-border-default { background: semantic.$role-border-default; }
+.theme-dark .swatch-role-border-subtle { background: semantic.$role-border-subtle; }
+.theme-dark .swatch-role-border-selected { background: semantic.$role-border-selected; }
+.theme-dark .swatch-role-border-error { background: semantic.$role-border-error; }
+.theme-dark .swatch-role-border-success { background: semantic.$role-border-success; }
+.theme-dark .swatch-role-border-warning { background: semantic.$role-border-warning; }
+.theme-dark .swatch-role-border-info { background: semantic.$role-border-info; }
+
+.theme-light .swatch-role-border-default { background: foundation.foundation-color(light, outline, outline); }
+.theme-light .swatch-role-border-subtle { background: foundation.foundation-color(light, outline, outlineVariant); }
+.theme-light .swatch-role-border-selected { background: foundation.foundation-color(light, primary, primaryFixed); }
+.theme-light .swatch-role-border-error { background: foundation.foundation-color(light, error, error); }
+.theme-light .swatch-role-border-success { background: foundation.foundation-color(light, states, success); }
+.theme-light .swatch-role-border-warning { background: foundation.foundation-color(light, states, warning); }
+.theme-light .swatch-role-border-info { background: foundation.foundation-color(light, states, info); }
+
+.theme-dark .swatch-state-interaction-hover { background: semantic.$state-interaction-hover; }
+.theme-dark .swatch-state-interaction-pressed { background: semantic.$state-interaction-pressed; }
+.theme-dark .swatch-state-interaction-focus { background: semantic.$state-interaction-focus; }
+.theme-dark .swatch-state-interaction-selected { background: semantic.$state-interaction-selected; }
+.theme-dark .swatch-state-disabled-bg { background: semantic.$state-disabled-bg; }
+.theme-dark .swatch-state-disabled-border { background: semantic.$state-disabled-border; }
+.theme-dark .swatch-state-disabled-content { background: semantic.$state-disabled-content; }
+
+.theme-light .swatch-state-interaction-hover { background: foundation.foundation-color(light, alpha, onSurface, 4); }
+.theme-light .swatch-state-interaction-pressed { background: foundation.foundation-color(light, alpha, onSurface, 8); }
+.theme-light .swatch-state-interaction-focus { background: foundation.foundation-color(light, alpha, onSurface, 12); }
+.theme-light .swatch-state-interaction-selected { background: foundation.foundation-color(light, alpha, primary, 20); }
+.theme-light .swatch-state-disabled-bg { background: foundation.foundation-color(light, alpha, onSurface, 12); }
+.theme-light .swatch-state-disabled-border { background: foundation.foundation-color(light, alpha, onSurface, 12); }
+.theme-light .swatch-state-disabled-content { background: foundation.foundation-color(light, alpha, onSurface, 38); }
+
+.theme-dark .swatch-util-surface-amber { background: foundation.foundation-color(dark, util, surface, amber); }
+.theme-dark .swatch-util-surface-blue { background: foundation.foundation-color(dark, util, surface, blue); }
+.theme-dark .swatch-util-surface-cyan { background: foundation.foundation-color(dark, util, surface, cyan); }
+.theme-dark .swatch-util-surface-fuchsia { background: foundation.foundation-color(dark, util, surface, fuchsia); }
+.theme-dark .swatch-util-surface-green { background: foundation.foundation-color(dark, util, surface, green); }
+.theme-dark .swatch-util-surface-indigo { background: foundation.foundation-color(dark, util, surface, indigo); }
+.theme-dark .swatch-util-surface-lime { background: foundation.foundation-color(dark, util, surface, lime); }
+.theme-dark .swatch-util-surface-orange { background: foundation.foundation-color(dark, util, surface, orange); }
+.theme-dark .swatch-util-surface-pink { background: foundation.foundation-color(dark, util, surface, pink); }
+.theme-dark .swatch-util-surface-purple { background: foundation.foundation-color(dark, util, surface, purple); }
+.theme-dark .swatch-util-surface-red { background: foundation.foundation-color(dark, util, surface, red); }
+.theme-dark .swatch-util-surface-rose { background: foundation.foundation-color(dark, util, surface, rose); }
+.theme-dark .swatch-util-surface-sky { background: foundation.foundation-color(dark, util, surface, sky); }
+.theme-dark .swatch-util-surface-teal { background: foundation.foundation-color(dark, util, surface, teal); }
+.theme-dark .swatch-util-surface-violet { background: foundation.foundation-color(dark, util, surface, violet); }
+.theme-dark .swatch-util-surface-yellow { background: foundation.foundation-color(dark, util, surface, yellow); }
+.theme-dark .swatch-util-surface-zinc { background: foundation.foundation-color(dark, util, surface, zinc); }
+
+.theme-light .swatch-util-surface-amber { background: foundation.foundation-color(light, util, surface, amber); }
+.theme-light .swatch-util-surface-blue { background: foundation.foundation-color(light, util, surface, blue); }
+.theme-light .swatch-util-surface-cyan { background: foundation.foundation-color(light, util, surface, cyan); }
+.theme-light .swatch-util-surface-fuchsia { background: foundation.foundation-color(light, util, surface, fuchsia); }
+.theme-light .swatch-util-surface-green { background: foundation.foundation-color(light, util, surface, green); }
+.theme-light .swatch-util-surface-indigo { background: foundation.foundation-color(light, util, surface, indigo); }
+.theme-light .swatch-util-surface-lime { background: foundation.foundation-color(light, util, surface, lime); }
+.theme-light .swatch-util-surface-orange { background: foundation.foundation-color(light, util, surface, orange); }
+.theme-light .swatch-util-surface-pink { background: foundation.foundation-color(light, util, surface, pink); }
+.theme-light .swatch-util-surface-purple { background: foundation.foundation-color(light, util, surface, purple); }
+.theme-light .swatch-util-surface-red { background: foundation.foundation-color(light, util, surface, red); }
+.theme-light .swatch-util-surface-rose { background: foundation.foundation-color(light, util, surface, rose); }
+.theme-light .swatch-util-surface-sky { background: foundation.foundation-color(light, util, surface, sky); }
+.theme-light .swatch-util-surface-teal { background: foundation.foundation-color(light, util, surface, teal); }
+.theme-light .swatch-util-surface-violet { background: foundation.foundation-color(light, util, surface, violet); }
+.theme-light .swatch-util-surface-yellow { background: foundation.foundation-color(light, util, surface, yellow); }
+.theme-light .swatch-util-surface-zinc { background: foundation.foundation-color(light, util, surface, zinc); }
+
+.theme-dark .swatch-util-content-amber { background: foundation.foundation-color(dark, util, content, amber); }
+.theme-dark .swatch-util-content-blue { background: foundation.foundation-color(dark, util, content, blue); }
+.theme-dark .swatch-util-content-cyan { background: foundation.foundation-color(dark, util, content, cyan); }
+.theme-dark .swatch-util-content-fuchsia { background: foundation.foundation-color(dark, util, content, fuchsia); }
+.theme-dark .swatch-util-content-green { background: foundation.foundation-color(dark, util, content, green); }
+.theme-dark .swatch-util-content-indigo { background: foundation.foundation-color(dark, util, content, indigo); }
+.theme-dark .swatch-util-content-lime { background: foundation.foundation-color(dark, util, content, lime); }
+.theme-dark .swatch-util-content-orange { background: foundation.foundation-color(dark, util, content, orange); }
+.theme-dark .swatch-util-content-pink { background: foundation.foundation-color(dark, util, content, pink); }
+.theme-dark .swatch-util-content-purple { background: foundation.foundation-color(dark, util, content, purple); }
+.theme-dark .swatch-util-content-red { background: foundation.foundation-color(dark, util, content, red); }
+.theme-dark .swatch-util-content-rose { background: foundation.foundation-color(dark, util, content, rose); }
+.theme-dark .swatch-util-content-sky { background: foundation.foundation-color(dark, util, content, sky); }
+.theme-dark .swatch-util-content-teal { background: foundation.foundation-color(dark, util, content, teal); }
+.theme-dark .swatch-util-content-violet { background: foundation.foundation-color(dark, util, content, violet); }
+.theme-dark .swatch-util-content-yellow { background: foundation.foundation-color(dark, util, content, yellow); }
+.theme-dark .swatch-util-content-zinc { background: foundation.foundation-color(dark, util, content, zinc); }
+
+.theme-light .swatch-util-content-amber { background: foundation.foundation-color(light, util, content, amber); }
+.theme-light .swatch-util-content-blue { background: foundation.foundation-color(light, util, content, blue); }
+.theme-light .swatch-util-content-cyan { background: foundation.foundation-color(light, util, content, cyan); }
+.theme-light .swatch-util-content-fuchsia { background: foundation.foundation-color(light, util, content, fuchsia); }
+.theme-light .swatch-util-content-green { background: foundation.foundation-color(light, util, content, green); }
+.theme-light .swatch-util-content-indigo { background: foundation.foundation-color(light, util, content, indigo); }
+.theme-light .swatch-util-content-lime { background: foundation.foundation-color(light, util, content, lime); }
+.theme-light .swatch-util-content-orange { background: foundation.foundation-color(light, util, content, orange); }
+.theme-light .swatch-util-content-pink { background: foundation.foundation-color(light, util, content, pink); }
+.theme-light .swatch-util-content-purple { background: foundation.foundation-color(light, util, content, purple); }
+.theme-light .swatch-util-content-red { background: foundation.foundation-color(light, util, content, red); }
+.theme-light .swatch-util-content-rose { background: foundation.foundation-color(light, util, content, rose); }
+.theme-light .swatch-util-content-sky { background: foundation.foundation-color(light, util, content, sky); }
+.theme-light .swatch-util-content-teal { background: foundation.foundation-color(light, util, content, teal); }
+.theme-light .swatch-util-content-violet { background: foundation.foundation-color(light, util, content, violet); }
+.theme-light .swatch-util-content-yellow { background: foundation.foundation-color(light, util, content, yellow); }
+.theme-light .swatch-util-content-zinc { background: foundation.foundation-color(light, util, content, zinc); }
+
+@media (max-width: 900px) {
+  .header-top-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .theme-switch {
+    width: fit-content;
+  }
+}

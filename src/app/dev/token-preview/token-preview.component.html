@@ -1,10 +1,31 @@
-<section class="preview-page">
+<section class="preview-page" [class.theme-dark]="isDarkTheme" [class.theme-light]="!isDarkTheme">
   <header class="preview-header">
-    <p class="eyebrow">Design tokens</p>
-    <h1>Token preview</h1>
-    <p class="intro">
-      Quick visual check for semantic and foundation color tokens.
-    </p>
+    <div class="header-top-row">
+      <div>
+        <p class="eyebrow">Design tokens</p>
+        <h1>Token preview</h1>
+        <p class="intro">
+          Quick visual check for semantic and foundation color tokens.
+        </p>
+      </div>
+
+      <div class="theme-switch" role="group" aria-label="Theme switch">
+        <button
+          type="button"
+          class="theme-switch-button"
+          [class.is-active]="!isDarkTheme"
+          (click)="setTheme('light')">
+          Light
+        </button>
+        <button
+          type="button"
+          class="theme-switch-button"
+          [class.is-active]="isDarkTheme"
+          (click)="setTheme('dark')">
+          Dark
+        </button>
+      </div>
+    </div>
   </header>
 
   <section class="preview-section" *ngFor="let section of darkSections">
@@ -21,6 +42,7 @@
 
         <div class="token-meta">
           <code class="token-name">{{ token.name }}</code>
+          <span class="token-value">{{ token.value }}</span>
         </div>
 
         <div class="token-dependencies" *ngIf="token.dependencies?.length">
