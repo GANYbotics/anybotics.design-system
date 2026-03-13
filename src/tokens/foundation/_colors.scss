@@ -355,7 +355,7 @@ $foundation-colors-dark: (
       surfaceContainer: schema.$secondary-800,
       surfaceContainerHigh: schema.$secondary-700,
       onBackground: schema.$secondary-100,
-      onSurface: schema.$secondary-50,
+      onSurface: primitives.$base-white,
       onSurfaceVariant: schema.$secondary-400,
     ),
 

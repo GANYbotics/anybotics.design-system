@@ -1,5 +1,54 @@
 @use '../../../tokens/semantic/colors' as semantic;
+@use '../../../tokens/semantic/typography' as semantic-typography;
 @use '../../../tokens/foundation/colors' as foundation;
+@use '../../../tokens/foundation/metrics' as metrics;
+@use '../../../tokens/palette/primitives' as primitives;
+
+$preview-page-padding: metrics.$space-32;
+$preview-section-spacing: metrics.$space-40;
+$preview-card-padding: metrics.$space-12;
+$preview-card-gap: metrics.$space-16;
+$preview-card-radius: metrics.$radius-12;
+$preview-inner-radius: metrics.$radius-8;
+$preview-pill-radius: metrics.$radius-8;
+$preview-switch-radius: metrics.$radius-12;
+$preview-switch-button-radius: metrics.$radius-8;
+$preview-swatch-height: metrics.$size-96;
+
+$preview-font-size-eyebrow: semantic-typography.$label-medium-font-size;
+$preview-font-size-title: semantic-typography.$heading-large-font-size;
+$preview-font-size-section-title: semantic-typography.$title-large-font-size;
+$preview-font-size-body: semantic-typography.$body-medium-font-size;
+$preview-font-size-caption: semantic-typography.$body-small-font-size;
+$preview-font-size-overline: semantic-typography.$label-small-font-size;
+$preview-font-size-arrow: semantic-typography.$body-large-font-size;
+
+$preview-line-height-eyebrow: semantic-typography.$label-medium-line-height;
+$preview-line-height-title: semantic-typography.$heading-large-line-height;
+$preview-line-height-section-title: semantic-typography.$title-large-line-height;
+$preview-line-height-body: semantic-typography.$body-medium-line-height;
+$preview-line-height-caption: semantic-typography.$body-small-line-height;
+$preview-line-height-overline: semantic-typography.$label-small-line-height;
+$preview-line-height-arrow: semantic-typography.$body-large-line-height;
+
+$preview-letter-spacing-eyebrow: 0.08em;
+$preview-letter-spacing-overline: 0.06em;
+
+$preview-color-dark-bg: primitives.$zinc-950;
+$preview-color-dark-surface: primitives.$zinc-900;
+$preview-color-dark-surface-alt: primitives.$zinc-800;
+$preview-color-dark-border: primitives.$zinc-700;
+$preview-color-dark-text: primitives.$zinc-50;
+$preview-color-dark-text-muted: primitives.$zinc-400;
+$preview-color-dark-text-subtle: primitives.$zinc-500;
+
+$preview-color-light-bg: primitives.$zinc-50;
+$preview-color-light-surface: primitives.$base-white;
+$preview-color-light-surface-alt: primitives.$zinc-100;
+$preview-color-light-border: primitives.$zinc-300;
+$preview-color-light-text: primitives.$zinc-950;
+$preview-color-light-text-muted: primitives.$zinc-600;
+$preview-color-light-text-subtle: primitives.$zinc-600;
 
 :host {
   display: block;
@@ -8,51 +57,51 @@
 
 .preview-page {
   min-height: 100%;
-  padding: 32px;
-  color: #fafafa;
+  padding: $preview-page-padding;
+  color: $preview-color-dark-text;
   transition: background-color 160ms ease, color 160ms ease;
 }
 
 .preview-page.theme-dark {
-  background: #09090b;
-  color: #fafafa;
+  background: $preview-color-dark-bg;
+  color: $preview-color-dark-text;
 }
 
 .preview-page.theme-light {
-  background: #fafafa;
-  color: #09090b;
+  background: $preview-color-light-bg;
+  color: $preview-color-light-text;
 }
 
 .preview-header {
-  margin-bottom: 32px;
+  margin-bottom: $preview-page-padding;
 }
 
 .header-top-row {
   display: flex;
-  gap: 16px;
+  gap: $preview-card-gap;
   align-items: flex-start;
   justify-content: space-between;
 }
 
 .eyebrow {
   margin: 0 0 8px;
-  font-size: 12px;
-  letter-spacing: 0.08em;
+  font-size: $preview-font-size-eyebrow;
+  letter-spacing: $preview-letter-spacing-eyebrow;
   text-transform: uppercase;
 }
 
 .theme-dark .eyebrow {
-  color: #9f9fa9;
+  color: $preview-color-dark-text-muted;
 }
 
 .theme-light .eyebrow {
-  color: #52525b;
+  color: $preview-color-light-text-muted;
 }
 
 h1 {
   margin: 0 0 8px;
-  font-size: 32px;
-  line-height: 40px;
+  font-size: $preview-font-size-title;
+  line-height: $preview-line-height-title;
 }
 
 .intro {
@@ -61,11 +110,11 @@ h1 {
 }
 
 .theme-dark .intro {
-  color: #d4d4d8;
+  color: $preview-color-dark-text-muted;
 }
 
 .theme-light .intro {
-  color: #52525b;
+  color: $preview-color-light-text-muted;
 }
 
 .theme-switch {
@@ -73,24 +122,24 @@ h1 {
   grid-auto-flow: column;
   gap: 4px;
   padding: 4px;
-  border-radius: 12px;
+  border-radius: $preview-switch-radius;
 }
 
 .theme-dark .theme-switch {
-  border: 1px solid #3f3f46;
-  background: #18181b;
+  border: 1px solid $preview-color-dark-border;
+  background: $preview-color-dark-surface;
 }
 
 .theme-light .theme-switch {
-  border: 1px solid #d4d4d8;
-  background: #f4f4f5;
+  border: 1px solid $preview-color-light-border;
+  background: $preview-color-light-surface-alt;
 }
 
 .theme-switch-button {
   min-width: 72px;
   padding: 8px 12px;
   border: 0;
-  border-radius: 8px;
+  border-radius: $preview-switch-button-radius;
   background: transparent;
   font: inherit;
   cursor: pointer;
@@ -98,90 +147,90 @@ h1 {
 }
 
 .theme-dark .theme-switch-button {
-  color: #a1a1aa;
+  color: $preview-color-dark-text-subtle;
 }
 
 .theme-light .theme-switch-button {
-  color: #52525b;
+  color: $preview-color-light-text-muted;
 }
 
 .theme-dark .theme-switch-button.is-active {
-  background: #3f3f46;
-  color: #fafafa;
+  background: $preview-color-dark-border;
+  color: $preview-color-dark-text;
 }
 
 .theme-light .theme-switch-button.is-active {
-  background: #ffffff;
-  color: #09090b;
-  box-shadow: inset 0 0 0 1px #d4d4d8;
+  background: $preview-color-light-surface;
+  color: $preview-color-light-text;
+  box-shadow: inset 0 0 0 1px $preview-color-light-border;
 }
 
 .preview-section {
-  margin-bottom: 40px;
+  margin-bottom: $preview-section-spacing;
 }
 
 .section-header {
-  margin-bottom: 16px;
+  margin-bottom: $preview-card-gap;
 
   h2 {
     margin: 0 0 4px;
-    font-size: 20px;
-    line-height: 28px;
+    font-size: $preview-font-size-section-title;
+    line-height: $preview-line-height-section-title;
   }
 
   p {
     margin: 0;
-    font-size: 14px;
-    line-height: 20px;
+    font-size: $preview-font-size-body;
+    line-height: $preview-line-height-body;
   }
 }
 
 .theme-dark .section-header p {
-  color: #9f9fa9;
+  color: $preview-color-dark-text-muted;
 }
 
 .theme-light .section-header p {
-  color: #52525b;
+  color: $preview-color-light-text-muted;
 }
 
 .token-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 16px;
+  gap: $preview-card-gap;
 }
 
 .token-card {
-  padding: 12px;
-  border-radius: 12px;
+  padding: $preview-card-padding;
+  border-radius: $preview-card-radius;
   align-content: start;
   transition: background-color 160ms ease, border-color 160ms ease;
 }
 
 .theme-dark .token-card {
-  border: 1px solid #3f3f46;
-  background: #18181b;
+  border: 1px solid $preview-color-dark-border;
+  background: $preview-color-dark-surface;
 }
 
 .theme-light .token-card {
-  border: 1px solid #d4d4d8;
-  background: #ffffff;
+  border: 1px solid $preview-color-light-border;
+  background: $preview-color-light-surface;
 }
 
 .token-swatch-shell {
   overflow: hidden;
-  height: 96px;
-  margin-bottom: 12px;
-  border-radius: 10px;
+  height: $preview-swatch-height;
+  margin-bottom: $preview-card-padding;
+  border-radius: $preview-pill-radius;
 }
 
 .theme-dark .token-swatch-shell {
-  border: 1px solid #3f3f46;
-  background: #27272a;
+  border: 1px solid $preview-color-dark-border;
+  background: $preview-color-dark-surface-alt;
 }
 
 .theme-light .token-swatch-shell {
-  border: 1px solid #d4d4d8;
-  background: #f4f4f5;
+  border: 1px solid $preview-color-light-border;
+  background: $preview-color-light-surface-alt;
 }
 
 .theme-dark .token-swatch-shell.is-alpha {
@@ -215,37 +264,37 @@ h1 {
 }
 
 .token-name {
-  font-size: 12px;
-  line-height: 16px;
+  font-size: $preview-font-size-caption;
+  line-height: $preview-line-height-caption;
   word-break: break-word;
 }
 
 .theme-dark .token-name {
-  color: #fafafa;
+  color: $preview-color-dark-text;
 }
 
 .theme-light .token-name {
-  color: #09090b;
+  color: $preview-color-light-text;
 }
 
 .token-value {
-  font-size: 12px;
-  line-height: 16px;
+  font-size: $preview-font-size-caption;
+  line-height: $preview-line-height-caption;
   word-break: break-word;
 }
 
 .theme-dark .token-value {
-  color: #9f9fa9;
+  color: $preview-color-dark-text-muted;
 }
 
 .theme-light .token-value {
-  color: #52525b;
+  color: $preview-color-light-text-muted;
 }
 
 .token-dependencies {
   display: grid;
   gap: 6px;
-  margin-top: 12px;
+  margin-top: $preview-card-padding;
 }
 
 .dependency-item {
@@ -259,59 +308,59 @@ h1 {
   display: grid;
   gap: 2px;
   padding: 8px 10px;
-  border-radius: 10px;
+  border-radius: $preview-pill-radius;
 }
 
 .theme-dark .dependency-pill {
-  border: 1px solid #3f3f46;
-  background: #27272a;
+  border: 1px solid $preview-color-dark-border;
+  background: $preview-color-dark-surface-alt;
 }
 
 .theme-light .dependency-pill {
-  border: 1px solid #d4d4d8;
-  background: #f4f4f5;
+  border: 1px solid $preview-color-light-border;
+  background: $preview-color-light-surface-alt;
 }
 
 .dependency-label {
-  font-size: 10px;
-  line-height: 12px;
+  font-size: $preview-font-size-overline;
+  line-height: $preview-line-height-overline;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: $preview-letter-spacing-overline;
 }
 
 .theme-dark .dependency-label {
-  color: #9f9fa9;
+  color: $preview-color-dark-text-muted;
 }
 
 .theme-light .dependency-label {
-  color: #52525b;
+  color: $preview-color-light-text-muted;
 }
 
 .dependency-value {
-  font-size: 12px;
-  line-height: 16px;
+  font-size: $preview-font-size-caption;
+  line-height: $preview-line-height-caption;
   word-break: break-word;
 }
 
 .theme-dark .dependency-value {
-  color: #fafafa;
+  color: semantic.$role-text-primary;
 }
 
 .theme-light .dependency-value {
-  color: #09090b;
+  color: $preview-color-light-text;
 }
 
 .dependency-arrow {
-  font-size: 16px;
-  line-height: 16px;
+  font-size: $preview-font-size-arrow;
+  line-height: $preview-line-height-arrow;
 }
 
 .theme-dark .dependency-arrow {
-  color: #71717a;
+  color: $preview-color-dark-text-subtle;
 }
 
 .theme-light .dependency-arrow {
-  color: #71717a;
+  color: $preview-color-dark-text-subtle;
 }
 
 .theme-dark .swatch-role-bg-canvas { background: semantic.$role-bg-canvas; }

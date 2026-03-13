@@ -1,0 +1,224 @@
+@use "sass:map";
+@use "../foundation/typography" as foundation;
+
+// Semantic typography
+// Role-based typography tokens.
+// These tokens alias foundation typography values instead of redefining them.
+
+// Display
+$display-large-font-family: foundation.$font-family-current;
+$display-large-font-size: foundation.$font-size-57;
+$display-large-line-height: foundation.$line-height-64;
+$display-large-font-weight: foundation.$font-weight-regular;
+$display-large-letter-spacing: foundation.$letter-spacing-minus-025;
+
+$display-medium-font-family: foundation.$font-family-current;
+$display-medium-font-size: foundation.$font-size-45;
+$display-medium-line-height: foundation.$line-height-52;
+$display-medium-font-weight: foundation.$font-weight-regular;
+$display-medium-letter-spacing: foundation.$letter-spacing-0;
+
+$display-small-font-family: foundation.$font-family-current;
+$display-small-font-size: foundation.$font-size-36;
+$display-small-line-height: foundation.$line-height-44;
+$display-small-font-weight: foundation.$font-weight-regular;
+$display-small-letter-spacing: foundation.$letter-spacing-0;
+
+// Heading
+$heading-large-font-family: foundation.$font-family-current;
+$heading-large-font-size: foundation.$font-size-32;
+$heading-large-line-height: foundation.$line-height-40;
+$heading-large-font-weight: foundation.$font-weight-bold;
+$heading-large-letter-spacing: foundation.$letter-spacing-0;
+
+$heading-medium-font-family: foundation.$font-family-current;
+$heading-medium-font-size: foundation.$font-size-28;
+$heading-medium-line-height: foundation.$line-height-36;
+$heading-medium-font-weight: foundation.$font-weight-bold;
+$heading-medium-letter-spacing: foundation.$letter-spacing-0;
+
+$heading-small-font-family: foundation.$font-family-current;
+$heading-small-font-size: foundation.$font-size-24;
+$heading-small-line-height: foundation.$line-height-32;
+$heading-small-font-weight: foundation.$font-weight-bold;
+$heading-small-letter-spacing: foundation.$letter-spacing-0;
+
+// Title
+$title-large-font-family: foundation.$font-family-current;
+$title-large-font-size: foundation.$font-size-22;
+$title-large-line-height: foundation.$line-height-28;
+$title-large-font-weight: foundation.$font-weight-medium;
+$title-large-letter-spacing: foundation.$letter-spacing-015;
+
+$title-medium-font-family: foundation.$font-family-current;
+$title-medium-font-size: foundation.$font-size-16;
+$title-medium-line-height: foundation.$line-height-24;
+$title-medium-font-weight: foundation.$font-weight-medium;
+$title-medium-letter-spacing: foundation.$letter-spacing-015;
+
+$title-small-font-family: foundation.$font-family-current;
+$title-small-font-size: foundation.$font-size-14;
+$title-small-line-height: foundation.$line-height-20;
+$title-small-font-weight: foundation.$font-weight-medium;
+$title-small-letter-spacing: foundation.$letter-spacing-015;
+
+// Label
+$label-large-font-family: foundation.$font-family-current;
+$label-large-font-size: foundation.$font-size-14;
+$label-large-line-height: foundation.$line-height-20;
+$label-large-font-weight: foundation.$font-weight-medium;
+$label-large-letter-spacing: foundation.$letter-spacing-010;
+
+$label-medium-font-family: foundation.$font-family-current;
+$label-medium-font-size: foundation.$font-size-12;
+$label-medium-line-height: foundation.$line-height-16;
+$label-medium-font-weight: foundation.$font-weight-medium;
+$label-medium-letter-spacing: foundation.$letter-spacing-050;
+
+$label-small-font-family: foundation.$font-family-current;
+$label-small-font-size: foundation.$font-size-11;
+$label-small-line-height: foundation.$line-height-16;
+$label-small-font-weight: foundation.$font-weight-medium;
+$label-small-letter-spacing: foundation.$letter-spacing-050;
+
+// Body
+$body-large-font-family: foundation.$font-family-current;
+$body-large-font-size: foundation.$font-size-16;
+$body-large-line-height: foundation.$line-height-24;
+$body-large-font-weight: foundation.$font-weight-regular;
+$body-large-letter-spacing: foundation.$letter-spacing-050;
+
+$body-medium-font-family: foundation.$font-family-current;
+$body-medium-font-size: foundation.$font-size-14;
+$body-medium-line-height: foundation.$line-height-20;
+$body-medium-font-weight: foundation.$font-weight-regular;
+$body-medium-letter-spacing: foundation.$letter-spacing-025;
+
+$body-small-font-family: foundation.$font-family-current;
+$body-small-font-size: foundation.$font-size-12;
+$body-small-line-height: foundation.$line-height-16;
+$body-small-font-weight: foundation.$font-weight-regular;
+$body-small-letter-spacing: foundation.$letter-spacing-040;
+
+// Optional token registry
+$semantic-typography: (
+  display: (
+    large: (
+      font-family: $display-large-font-family,
+      font-size: $display-large-font-size,
+      line-height: $display-large-line-height,
+      font-weight: $display-large-font-weight,
+      letter-spacing: $display-large-letter-spacing,
+    ),
+    medium: (
+      font-family: $display-medium-font-family,
+      font-size: $display-medium-font-size,
+      line-height: $display-medium-line-height,
+      font-weight: $display-medium-font-weight,
+      letter-spacing: $display-medium-letter-spacing,
+    ),
+    small: (
+      font-family: $display-small-font-family,
+      font-size: $display-small-font-size,
+      line-height: $display-small-line-height,
+      font-weight: $display-small-font-weight,
+      letter-spacing: $display-small-letter-spacing,
+    ),
+  ),
+  heading: (
+    large: (
+      font-family: $heading-large-font-family,
+      font-size: $heading-large-font-size,
+      line-height: $heading-large-line-height,
+      font-weight: $heading-large-font-weight,
+      letter-spacing: $heading-large-letter-spacing,
+    ),
+    medium: (
+      font-family: $heading-medium-font-family,
+      font-size: $heading-medium-font-size,
+      line-height: $heading-medium-line-height,
+      font-weight: $heading-medium-font-weight,
+      letter-spacing: $heading-medium-letter-spacing,
+    ),
+    small: (
+      font-family: $heading-small-font-family,
+      font-size: $heading-small-font-size,
+      line-height: $heading-small-line-height,
+      font-weight: $heading-small-font-weight,
+      letter-spacing: $heading-small-letter-spacing,
+    ),
+  ),
+  title: (
+    large: (
+      font-family: $title-large-font-family,
+      font-size: $title-large-font-size,
+      line-height: $title-large-line-height,
+      font-weight: $title-large-font-weight,
+      letter-spacing: $title-large-letter-spacing,
+    ),
+    medium: (
+      font-family: $title-medium-font-family,
+      font-size: $title-medium-font-size,
+      line-height: $title-medium-line-height,
+      font-weight: $title-medium-font-weight,
+      letter-spacing: $title-medium-letter-spacing,
+    ),
+    small: (
+      font-family: $title-small-font-family,
+      font-size: $title-small-font-size,
+      line-height: $title-small-line-height,
+      font-weight: $title-small-font-weight,
+      letter-spacing: $title-small-letter-spacing,
+    ),
+  ),
+  label: (
+    large: (
+      font-family: $label-large-font-family,
+      font-size: $label-large-font-size,
+      line-height: $label-large-line-height,
+      font-weight: $label-large-font-weight,
+      letter-spacing: $label-large-letter-spacing,
+    ),
+    medium: (
+      font-family: $label-medium-font-family,
+      font-size: $label-medium-font-size,
+      line-height: $label-medium-line-height,
+      font-weight: $label-medium-font-weight,
+      letter-spacing: $label-medium-letter-spacing,
+    ),
+    small: (
+      font-family: $label-small-font-family,
+      font-size: $label-small-font-size,
+      line-height: $label-small-line-height,
+      font-weight: $label-small-font-weight,
+      letter-spacing: $label-small-letter-spacing,
+    ),
+  ),
+  body: (
+    large: (
+      font-family: $body-large-font-family,
+      font-size: $body-large-font-size,
+      line-height: $body-large-line-height,
+      font-weight: $body-large-font-weight,
+      letter-spacing: $body-large-letter-spacing,
+    ),
+    medium: (
+      font-family: $body-medium-font-family,
+      font-size: $body-medium-font-size,
+      line-height: $body-medium-line-height,
+      font-weight: $body-medium-font-weight,
+      letter-spacing: $body-medium-letter-spacing,
+    ),
+    small: (
+      font-family: $body-small-font-family,
+      font-size: $body-small-font-size,
+      line-height: $body-small-line-height,
+      font-weight: $body-small-font-weight,
+      letter-spacing: $body-small-letter-spacing,
+    ),
+  ),
+);
+
+@function semantic-typography($category, $size, $property) {
+  @return map.get($semantic-typography, $category, $size, $property);
+}
